@@ -1,19 +1,20 @@
 const express = require('express');
 const place_search = require('./place-search.js');
-// const bodyParser = require('body-parser');
 const hbs = require('hbs');
-
 const port = process.env.PORT || 3000;
+
 var app = express();
 
-
+//serve up static css files
+app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
-app.set('view engine', 'hbs');
-// app.use(express.static(__dirname + '/public'));
-// app.use(bodyParser.urlencoded({extended: true}));
+//set view engines
+app.set('view engine', 'hbs', 'html');
+//render html file using hbs engine
+app.engine('html', require('hbs').__express);
+
 
 app.use('/placesearch', function(req, res, next) {
-
   place_search.getPlaces(req.query.address, req.query.results_num)
     .then(function(details) {
       var resultsHTML = '';
@@ -35,8 +36,10 @@ app.use('/placesearch', function(req, res, next) {
     });
 });
 
+
+
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/public/search.html');
+  res.render('search.html');
 });
 
 app.get('/placesearch', function(req, res) {

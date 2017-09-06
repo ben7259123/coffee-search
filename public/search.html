@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Coffee Search</title>
+  <link href="search.css" rel="stylesheet">
+</head>
+<body>
+
+
+<h1>Find Coffee Near You</h1>
+
+<form action="/placesearch" method="post">
+  <fieldset>
+    <legend>Where are you located?</legend>
+
+    <label for="address">Address:</label>
+    <input type="text" name="address" id="address"></input>
+
+    <label for="results_num">Number of results:</label>
+    <input type="number" name="results_num" min="1" max="10" id="results_num">
+
+    <input type="submit">
+  </fieldset>
+</form>
+
+
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 const express = require('express');
 const place_search = require('./place-search.js');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const hbs = require('hbs');
 
 var app = express();
@@ -9,22 +9,23 @@ var app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(function(req, res, next) {
-  console.log(req.body.results_num);
-  place_search.getPlaces(req.body.address, req.body.results_num)
+
+  place_search.getPlaces(req.query.address, req.query.results_num)
     .then(function(details) {
       var resultsHTML = '';
-      for (var i = 0; i < details.length; i++) {
+      for (var i = 0; i < details.results.length; i++) {
         resultsHTML +=
         `<div id="example-${i}">
-           <h2>${details[i].name}</h>
-           <p>${details[i].address}</p>
-           <p>${details[i].website}</p>
+           <h2>${details.results[i].name}</h>
+           <p>${details.results[i].address}</p>
+           <p>${details.results[i].website}</p>
          </div>`;
       }
       req.results = resultsHTML;
+      req.location = details.formatted_address;
       next();
     })
     .catch(function(e) {
@@ -34,10 +35,11 @@ app.use(function(req, res, next) {
 });
 
 
-app.post('/placesearch', function(req, res) {
+app.get('/placesearch', function(req, res) {
 
   res.render('result.hbs', {
-    results: req.results
+    results: req.results,
+    location: req.location
   });
 });
 

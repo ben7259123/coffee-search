@@ -18,7 +18,8 @@ var geocodeAddress = function(address) {
       } else if (!error && response.statusCode === 200) {
         resolve({
           lat: response.body.results[0].geometry.location.lat,
-          lng: response.body.results[0].geometry.location.lng
+          lng: response.body.results[0].geometry.location.lng,
+          formatted_address: response.body.results[0].formatted_address
         });
       }
     });
@@ -83,14 +84,22 @@ var getPromises = function(place_ids) {
 
 
 var getPlaces = function(address, resultNum) {
+
   return new Promise(function(resolve, reject) {
+    var formatted_address = '';
     geocodeAddress(address).then(function(response) {
+      formatted_address = response.formatted_address;
+      // console.log(formatted_address);
       return placeSearch(response.lat, response.lng, resultNum);
     }).then(function(results) {
       return Promise.all(getPromises(results));
     })
     .then(function(results) {
-      resolve(results);
+      console.log(formatted_address);
+      resolve({
+        results: results,
+        formatted_address: formatted_address
+      });
     })
     .catch(function(e) {
       reject(e);

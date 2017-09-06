@@ -8,10 +8,10 @@ var app = express();
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
-app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/public'));
 // app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(function(req, res, next) {
+app.use('/placesearch', function(req, res, next) {
 
   place_search.getPlaces(req.query.address, req.query.results_num)
     .then(function(details) {
@@ -34,9 +34,11 @@ app.use(function(req, res, next) {
     });
 });
 
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/public/search.html');
+});
 
 app.get('/placesearch', function(req, res) {
-
   res.render('result.hbs', {
     results: req.results,
     location: req.location

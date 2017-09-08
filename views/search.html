@@ -6,26 +6,34 @@
   <title>Coffee Search</title>
   <link href="css/search.css" rel="stylesheet">
 </head>
+
 <body>
-
 <div class="l-wrap">
-<h1>Find Coffee Near You</h1>
+  <div class="twelve-col-grid">
+    <div class="grid-item">
+      <h1>Find Coffee Near You</h1>
+      <div class="grid-col-ten">
 
-<form action="/placesearch" method="get">
-  <fieldset>
-    <legend>Where are you located?</legend>
-
-    <label for="address">Address:</label>
-    <input type="text" name="address" id="address"></input>
-
-    <label for="results_num">Number of results:</label>
-    <input type="number" name="results_num" min="1" max="10" id="results_num">
-
-    <input type="submit">
-  </fieldset>
-</form>
+        <form action="/placesearch" method="get">
+          <fieldset>
+            <div class="address-container">
+              <label for="address">Address:</label>
+              <input type="text" name="address" id="address"></input>
+              <p class="error-msg">foobar</p>
+            </div>
+            <div class="num-container">
+              <label for="results_num">Number of results:</label>
+              <input type="number" name="results_num" min="1" max="10" id="results_num">
+              <p class="error-msg">foobar</p>
+            </div>
+            <div class="submit-container">
+              <input type="submit">
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-
-
 </body>
 </html>

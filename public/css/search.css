@@ -24,9 +24,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-body {
-	line-height: 1;
-}
+
 ol, ul {
 	list-style: none;
 }
@@ -93,7 +91,8 @@ input[type="submit"] {
 .error-msg {
 	margin-top: .5em;
 	font-size: 1em;
-
+	visibility: hidden;
+	color: #ffffff;
 }
 
 label {
@@ -112,7 +111,9 @@ label {
 }
 
 body {
+	 line-height: 1;
 	 background: #eeeeee;
 	 height: 100%;
+	 width: 100%;
 	 font-style: serif;
 }

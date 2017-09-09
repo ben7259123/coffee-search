@@ -60,7 +60,7 @@ body {
 
 }
 
-a {
+#search-again {
   text-align: center;
   display: block;
   padding-bottom: 5%;
@@ -88,4 +88,9 @@ h2 {
   text-align: left;
   font-size: .8em;
   margin-left: 35px;
+}
+
+
+.country-name, .postal-code {
+	display: none;
 }

@@ -20,11 +20,21 @@ app.use('/placesearch', function(req, res, next) {
     .then(function(details) {
       var resultsHTML = '';
       for (var i = 0; i < details.results.length; i++) {
+        var address = details.results[i].address;
+        var sliceIndex = address.indexOf('<span class=\"postal-code\"');
+        var slicedAddress = address.slice(0, sliceIndex);
+
+        var name =  details.results[i].name;
+        var website = details.results[i].website;
+        if (website) {
+          heading = `<a href=${website}>${name}</a>`
+        } else {
+          heading = name;
+        }
         resultsHTML +=
         `<div class="result">
-           <h2>${details.results[i].name}</h2>
-           <p class="result-address">${details.results[i].address}</p>
-           <p class="result-website">${details.results[i].website}</p>
+           <h2>${heading}</h2>
+           <p class="result-address">${slicedAddress}</p>
          </div>`;
       }
       req.results = resultsHTML;

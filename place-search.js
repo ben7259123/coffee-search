@@ -70,7 +70,7 @@ var getPromises = function(place_ids) {
         } else if (response.body.status ==='OK') {
           resolve({
             name: response.body.result.name,
-            address: response.body.result.formatted_address,
+            address: response.body.result.adr_address,
             phoneNumber: response.body.result.international_phone_number,
             website: response.body.result.website,
             status: response.body.status

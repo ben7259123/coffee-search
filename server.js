@@ -9,9 +9,10 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 //set view engines
-app.set('view engine', 'hbs', 'html');
-//render html file using hbs engine
-app.engine('html', require('hbs').__express);
+app.set('view engine', 'hbs');
+
+// //render html file using hbs engine
+// app.engine('html', require('hbs').__express);
 
 
 app.use('/placesearch', function(req, res, next) {
@@ -20,10 +21,10 @@ app.use('/placesearch', function(req, res, next) {
       var resultsHTML = '';
       for (var i = 0; i < details.results.length; i++) {
         resultsHTML +=
-        `<div id="example-${i}">
-           <h2>${details.results[i].name}</h>
-           <p>${details.results[i].address}</p>
-           <p>${details.results[i].website}</p>
+        `<div class="result">
+           <h2>${details.results[i].name}</h2>
+           <p class="result-address">${details.results[i].address}</p>
+           <p class="result-website">${details.results[i].website}</p>
          </div>`;
       }
       req.results = resultsHTML;
@@ -32,18 +33,22 @@ app.use('/placesearch', function(req, res, next) {
     })
     .catch(function(e) {
       console.log(e);
-      res.send(`<h1>${e}</h1>`);
+      res.render('search.hbs', {
+        heading: `<h1>Place could not be Found</h1>`
+      });
     });
 });
 
 
 
 app.get('/', function(req, res) {
-  res.render('search.html');
+  res.render('search.hbs', {
+    heading: `<h1>Find Coffee Near You</h1>`
+  });
 });
 
 app.get('/placesearch', function(req, res) {
-  res.render('result.hbs', {
+  res.render('results.hbs', {
     results: req.results,
     location: req.location
   });

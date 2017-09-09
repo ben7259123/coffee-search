@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <title>Coffee Search</title>
@@ -9,11 +8,11 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
-<h1 id="heading">Find Coffee Near You</h1>
+{{{heading}}}
+<!-- <h1 id="heading">Find Coffee Near You</h1> -->
 <div class="form-container" id="form-container">
-  <form action="#" novalidate="novalidate" method="get" id="search-form">
+  <form action="/placesearch" novalidate="novalidate" method="get" id="search-form">
     <fieldset>
       <div class="address-container">
         <label for="address">Address:</label>
@@ -23,7 +22,7 @@
       <div class="num-container">
         <label for="results_num">Number of results:</label>
         <input type="number" name="results_num" min="1" max="10" id="results_num">
-        <p class="error-msg" id="num-err">Number must be larger than zero</p>
+        <p class="error-msg" id="num-err">----</p>
       </div>
       <input type="submit" value="submit">
     </fieldset>

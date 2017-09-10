@@ -1,21 +1,5 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio {
+html, body, div, h1, h2, p, a,
+fieldset, form, label, legend {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -23,17 +7,6 @@ time, mark, audio {
 	font: inherit;
 	vertical-align: baseline;
 }
-
-ol, ul {
-	list-style: none;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-/*****************/
 
 body {
   font-size: 1em;
@@ -44,53 +17,63 @@ body {
 .l-wrap, body {
   width: 100%;
 }
-.result {
-  margin: 10%;
-}
-.result:first-child {
-  padding-top: 15px;
-}
-
-.result-container {
-  font-size: 1.2em;
-  margin: 0 auto;
-  max-width: 420px;
-  background: #3b5998;
-  color: #eeeeee;
-
-}
-
-#search-again {
-  text-align: center;
-  display: block;
-  padding-bottom: 5%;
-}
 
 h1 {
-  font-size: 1.5em;
+  font-size: 1.8em;
   color: #3b5998;
-  margin-top: 15px;
+  margin: 30px auto;
+
 }
 
 h2 {
   text-align: left;
-  margin-left: 35px;
-  font-size: 1.2em;
-  margin-bottom: 10px;
+  font-size: 1.5em;
+  margin-bottom: 13px;
+}
+
+a {
+	text-decoration: none;
 }
 
 .heading {
   text-align: center;
 }
 
-
-.result-address, .result-website {
+.result {
+	margin: 0 10% 10% 10%;
   text-align: left;
   font-size: .8em;
-  margin-left: 35px;
 }
 
-
-.country-name, .postal-code {
-	display: none;
+.result-container {
+	padding-top: 20px;
+	padding-bottom: 30px;
+  font-size: 1.2em;
+  margin: 0 auto;
+  max-width: 420px;
+  background: #3b5998;
+  color: #eeeeee;
 }
+
+#search-again {
+  text-align: center;
+  display: block;
+}
+
+#phone-number {
+	display: block;
+	margin-top: 5px;
+}
+
+h2 > a:link {color: #000000; }
+h2 > a:visited {color: #A9A9A9; }
+h2 > a:focus {color: #eeeeee; }
+h2 > a:hover {color: #eeeeee; }
+h2 > a:active {color: #000000; }
+
+/*for phone number links and back to home page link*/
+a:link {color: #eeeeee; }
+a:visited {color: #eeeeee; }
+a:focus {color: #eeeeee; }
+a:hover {color: #000000; }
+a:active {color: #eeeeee; }

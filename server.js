@@ -5,40 +5,16 @@ const port = process.env.PORT || 3000;
 
 var app = express();
 
-//serve up static css files
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
-//set view engines
+
 app.set('view engine', 'hbs');
-
-// //render html file using hbs engine
-// app.engine('html', require('hbs').__express);
-
 
 app.use('/placesearch', function(req, res, next) {
   place_search.getPlaces(req.query.address, req.query.results_num)
     .then(function(details) {
-      var resultsHTML = '';
-      for (var i = 0; i < details.results.length; i++) {
-        var address = details.results[i].address;
-        var sliceIndex = address.indexOf('<span class=\"postal-code\"');
-        var slicedAddress = address.slice(0, sliceIndex);
-
-        var name =  details.results[i].name;
-        var website = details.results[i].website;
-        if (website) {
-          heading = `<a href=${website}>${name}</a>`
-        } else {
-          heading = name;
-        }
-        resultsHTML +=
-        `<div class="result">
-           <h2>${heading}</h2>
-           <p class="result-address">${slicedAddress}</p>
-         </div>`;
-      }
-      req.results = resultsHTML;
-      req.location = details.formatted_address;
+      req.results = place_search.resultsToHTML(details.results);
+      req.location = details.location;
       next();
     })
     .catch(function(e) {
@@ -48,8 +24,6 @@ app.use('/placesearch', function(req, res, next) {
       });
     });
 });
-
-
 
 app.get('/', function(req, res) {
   res.render('search.hbs', {

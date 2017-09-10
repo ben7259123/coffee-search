@@ -1,6 +1,5 @@
 const request = require('request');
 
-
 var geocodeAddress = function(address) {
   return new Promise(function(resolve, reject) {
     var encodedAddress = encodeURIComponent(address);
@@ -16,10 +15,21 @@ var geocodeAddress = function(address) {
       } else if (response.body.status === 'ZERO_RESULTS') {
         reject('zero results found (Geocode)');
       } else if (!error && response.statusCode === 200) {
+        var address_components = response.body.results[0].address_components;
+        var cityName, adminLevelOne, location = "";
+        address_components.forEach(function(component) {
+          var type = component.types[0];
+          if (type === 'locality') {
+            cityName = component.long_name;
+          } else if (type === 'administrative_area_level_1') {
+            adminLevelOne = component.long_name;
+          }
+        });
+        location = `${cityName}, ${adminLevelOne}`;
         resolve({
           lat: response.body.results[0].geometry.location.lat,
           lng: response.body.results[0].geometry.location.lng,
-          formatted_address: response.body.results[0].formatted_address
+          location: location
         });
       }
     });
@@ -40,10 +50,8 @@ var placeSearch = function(lat, lng, resultNum) {
         reject('zero results found (Nearby Search)');
       } else if (!error && response.statusCode === 200) {
           var place_ids = [];
-          console.log(resultNum);
           for (var i = 0; i < resultNum; i++) {
             place_ids.push(response.body.results[i].place_id);
-
           }
         resolve(place_ids);
       }
@@ -84,21 +92,18 @@ var getPromises = function(place_ids) {
 
 
 var getPlaces = function(address, resultNum) {
-
+  var location = '';
   return new Promise(function(resolve, reject) {
-    var formatted_address = '';
     geocodeAddress(address).then(function(response) {
-      formatted_address = response.formatted_address;
-      // console.log(formatted_address);
+      location = response.location;
       return placeSearch(response.lat, response.lng, resultNum);
     }).then(function(results) {
       return Promise.all(getPromises(results));
     })
     .then(function(results) {
-      console.log(formatted_address);
       resolve({
         results: results,
-        formatted_address: formatted_address
+        location: location
       });
     })
     .catch(function(e) {
@@ -108,6 +113,44 @@ var getPlaces = function(address, resultNum) {
   });
 };
 
+var resultsToHTML = function(results) {
+  var resultsHTML = '';
+  for (var i = 0; i <results.length; i++) {
+    var address = results[i].address;
+    var sliceIndex = address.indexOf('<span class=\"postal-code\"');
+    var slicedAddress = address.slice(0, sliceIndex);
+
+    var name =  results[i].name;
+    var website = results[i].website;
+    var phoneNumber = results[i].phoneNumber;
+    if (website) {
+      heading = `<a href=${website}>${name}</a>`
+    } else {
+      heading = name;
+    }
+
+    if (phoneNumber) {
+      if (phoneNumber.startsWith('+1 ')) {
+        slicedPhoneNumber = phoneNumber.slice(3);
+      }
+      var phoneNumberHTML =
+      `<a id="phone-number" href=\"tel:${phoneNumber}\">${slicedPhoneNumber}</a>`;
+    } else {
+      phoneNumberHTML = '';
+    }
+
+    resultsHTML +=
+    `<div class="result">
+       <h2>${heading}</h2>
+       <p class="result-address">${slicedAddress}</p>
+       ${phoneNumberHTML}
+     </div>`;
+  }
+  return resultsHTML;
+}
+
+
 module.exports = {
-  getPlaces: getPlaces
+  getPlaces: getPlaces,
+  resultsToHTML: resultsToHTML
 };

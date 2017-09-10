@@ -5,12 +5,10 @@
   <title>Coffee Search</title>
   <script src="js/search.js"></script>
   <link href="css/search.css" rel="stylesheet">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 {{{heading}}}
-<!-- <h1 id="heading">Find Coffee Near You</h1> -->
 <div class="form-container" id="form-container">
   <form action="/placesearch" novalidate="novalidate" method="get" id="search-form">
     <fieldset>
@@ -24,7 +22,7 @@
         <input type="number" name="results_num" min="1" max="10" id="results_num">
         <p class="error-msg" id="num-err">----</p>
       </div>
-      <input type="submit" value="submit">
+      <input class="submit" type="submit" value="submit">
     </fieldset>
   </form>
 </div>

@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
 
   document.getElementById('search-form')
   .addEventListener('submit', function(e) {
-    var displayErrorMessage = function(id, errorMessage){
+    var displayErrorMessage = function(id, errorMessage) {
       e.preventDefault();
       document.getElementById(id).style.visibility = "visible";
       document.getElementById(id).textContent = errorMessage;

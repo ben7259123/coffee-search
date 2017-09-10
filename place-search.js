@@ -124,7 +124,7 @@ var resultsToHTML = function(results) {
     var website = results[i].website;
     var phoneNumber = results[i].phoneNumber;
     if (website) {
-      heading = `<a href=${website}>${name}</a>`
+      heading = `<a class=\"result-link\" href=${website}>${name}</a>`
     } else {
       heading = name;
     }
@@ -134,20 +134,20 @@ var resultsToHTML = function(results) {
         slicedPhoneNumber = phoneNumber.slice(3);
       }
       var phoneNumberHTML =
-      `<a id="phone-number" href=\"tel:${phoneNumber}\">${slicedPhoneNumber}</a>`;
+      `<a id=\"phone-number\" href=\"tel:${phoneNumber}\">${slicedPhoneNumber}</a>`;
     } else {
       phoneNumberHTML = '';
     }
 
     resultsHTML +=
-    `<div class="result">
+    `<div class=\"result\">
        <h2>${heading}</h2>
-       <p class="result-address">${slicedAddress}</p>
+       <p>${slicedAddress}</p>
        ${phoneNumberHTML}
      </div>`;
   }
   return resultsHTML;
-}
+};
 
 
 module.exports = {

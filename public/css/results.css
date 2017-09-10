@@ -65,15 +65,15 @@ a {
 	margin-top: 5px;
 }
 
-h2 > a:link {color: #000000; }
-h2 > a:visited {color: #A9A9A9; }
-h2 > a:focus {color: #eeeeee; }
-h2 > a:hover {color: #eeeeee; }
-h2 > a:active {color: #000000; }
+.result-heading:link {color: #000000; }
+.result-heading:visited {color: #A9A9A9; }
+.result-heading:focus {color: #eeeeee; }
+.result-heading:hover {color: #eeeeee; }
+.result-heading:active {color: #000000; }
 
 /*for phone number links and back to home page link*/
-a:link {color: #eeeeee; }
-a:visited {color: #eeeeee; }
-a:focus {color: #eeeeee; }
-a:hover {color: #000000; }
-a:active {color: #eeeeee; }
+.phone-number:link {color: #eeeeee; }
+.phone-number:visited {color: #eeeeee; }
+.phone-number:focus {color: #eeeeee; }
+.phone-number:hover {color: #000000; }
+.phone-number:active {color: #eeeeee; }

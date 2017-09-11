@@ -28,7 +28,7 @@ h1 {
 h2 {
   text-align: left;
   font-size: 1.5em;
-  margin-bottom: 13px;
+  margin-bottom: 8px;
 }
 
 a {
@@ -60,18 +60,26 @@ a {
   display: block;
 }
 
-#phone-number {
+.phone-number {
 	display: block;
 	margin-top: 5px;
 }
 
-.result-heading:link {color: #000000; }
-.result-heading:visited {color: #A9A9A9; }
-.result-heading:focus {color: #eeeeee; }
-.result-heading:hover {color: #eeeeee; }
-.result-heading:active {color: #000000; }
+/*link back to search page*/
+#search-again:link {color: #eeeeee; }
+#search-again:visited {color: #eeeeee; }
+#search-again:focus {color: #eeeeee; }
+#search-again:hover {color: #000000; }
+#search-again:active {color: #eeeeee; }
 
-/*for phone number links and back to home page link*/
+/*link of each search result*/
+.result-link:link {color: #000000; }
+.result-link:visited {color: #A9A9A9; }
+.result-link:focus {color: #eeeeee; }
+.result-link:hover {color: #eeeeee; }
+.result-link:active {color: #000000; }
+
+/*phone number link for each result*/
 .phone-number:link {color: #eeeeee; }
 .phone-number:visited {color: #eeeeee; }
 .phone-number:focus {color: #eeeeee; }

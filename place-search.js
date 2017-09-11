@@ -134,7 +134,7 @@ var resultsToHTML = function(results) {
         slicedPhoneNumber = phoneNumber.slice(3);
       }
       var phoneNumberHTML =
-      `<a id=\"phone-number\" href=\"tel:${phoneNumber}\">${slicedPhoneNumber}</a>`;
+      `<a class=\"phone-number\" href=\"tel:${phoneNumber}\">${slicedPhoneNumber}</a>`;
     } else {
       phoneNumberHTML = '';
     }

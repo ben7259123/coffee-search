@@ -6,35 +6,22 @@
   <title>Coffee Search</title>
   <link href="css/results.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    window.addEventListener('load', function() {
+      var touchsupport = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+      if (!touchsupport) {
+        document.documentElement.className += "non-touch";
+      }
+    });
+  </script>
 </head>
 <body>
 <div class="l-wrap">
   <h1 class="heading">Coffee Near:<br>{{location}}</h1>
   <div class="result-container">
     {{{results}}}
-    <a href="/" id="search-again">search again</a>
+    <a href="/" id="search-again" class="phone-and-search">search again</a>
   </div>
 </div>
 </body>
 </html>
-
-
-<!--
-<body>
-  <h1>Results For:<br>location</h1>
-
-  <div class="result-container">
-    <div class="result">
-      <h2></h2>
-      <p></p>
-      <p></p>
-    </div>
-    <div class="result">
-      <h2></h2>
-      <p></p>
-      <p></p>
-    </div>
-    <a href="/">search again</a>
-  </div>
-
-</body>-->

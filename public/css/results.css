@@ -65,23 +65,22 @@ a {
 	margin-top: 5px;
 }
 
-/*link back to search page*/
-#search-again:link {color: #eeeeee; }
-#search-again:visited {color: #eeeeee; }
-#search-again:focus {color: #eeeeee; }
-#search-again:hover {color: #000000; }
-#search-again:active {color: #eeeeee; }
-
-/*link of each search result*/
 .result-link:link {color: #000000; }
 .result-link:visited {color: #A9A9A9; }
-.result-link:focus {color: #eeeeee; }
-.result-link:hover {color: #eeeeee; }
 .result-link:active {color: #000000; }
 
-/*phone number link for each result*/
-.phone-number:link {color: #eeeeee; }
-.phone-number:visited {color: #eeeeee; }
-.phone-number:focus {color: #eeeeee; }
-.phone-number:hover {color: #000000; }
-.phone-number:active {color: #eeeeee; }
+.phone-and-search:link {color: #eeeeee; }
+.phone-and-search:visited {color: #eeeeee; }
+.phone-and-search:active {color: #eeeeee; }
+/*link of each search result - non-touch devices*/
+html.non-touch .result-link:link {color: #000000; }
+html.non-touch .result-link:visited {color: #A9A9A9; }
+html.non-touch .result-link:focus {color: #eeeeee; }
+html.non-touch .result-link:hover {color: #eeeeee; }
+html.non-touch .result-link:active {color: #000000; }
+/*phone number link for each result and search again - non touch devices*/
+html.non-touch .phone-and-search:link {color: #eeeeee; }
+html.non-touch .phone-and-search:visited {color: #eeeeee; }
+html.non-touch .phone-and-search:focus {color: #eeeeee; }
+html.non-touch .phone-and-search:hover {color: #000000; }
+html.non-touch .phone-and-search:active {color: #eeeeee; }

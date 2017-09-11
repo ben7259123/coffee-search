@@ -65,22 +65,25 @@ a {
 	margin-top: 5px;
 }
 
+/*mobile devices*/
+/*link of each search result*/
 .result-link:link {color: #000000; }
 .result-link:visited {color: #A9A9A9; }
 .result-link:active {color: #eeeeee; }
 
+/*phone number link for each result and search again link*/
 .phone-and-search:link {color: #eeeeee; }
 .phone-and-search:visited {color: #eeeeee; }
 .phone-and-search:active {color: #000000; }
-/*link of each search result - non-touch devices*/
+/*non-touch devices*/
 html.non-touch .result-link:link {color: #000000; }
 html.non-touch .result-link:visited {color: #A9A9A9; }
 html.non-touch .result-link:focus {color: #eeeeee; }
 html.non-touch .result-link:hover {color: #eeeeee; }
 html.non-touch .result-link:active {color: #000000; }
-/*phone number link for each result and search again - non touch devices*/
+
 html.non-touch .phone-and-search:link {color: #eeeeee; }
 html.non-touch .phone-and-search:visited {color: #eeeeee; }
-html.non-touch .phone-and-search:focus {color: #eeeeee; }
+html.non-touch .phone-and-search:focus {color: #000000; }
 html.non-touch .phone-and-search:hover {color: #000000; }
 html.non-touch .phone-and-search:active {color: #eeeeee; }

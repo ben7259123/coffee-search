@@ -67,11 +67,11 @@ a {
 
 .result-link:link {color: #000000; }
 .result-link:visited {color: #A9A9A9; }
-.result-link:active {color: #000000; }
+.result-link:active {color: #eeeeee; }
 
 .phone-and-search:link {color: #eeeeee; }
 .phone-and-search:visited {color: #eeeeee; }
-.phone-and-search:active {color: #eeeeee; }
+.phone-and-search:active {color: #000000; }
 /*link of each search result - non-touch devices*/
 html.non-touch .result-link:link {color: #000000; }
 html.non-touch .result-link:visited {color: #A9A9A9; }
